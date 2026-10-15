@@ -24,6 +24,8 @@ jobs:
 
       - name: Update Contribution Activity
         uses: actions/github-script@v7
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           script: |
             const fs = require("fs");
@@ -31,137 +33,191 @@ jobs:
             const username = "DeveloperBoy-A";
             const readmePath = "README.md";
 
+            const repos = [
+              "AutoDelete_Bot",
+              "Auto_Filter_Bot",
+              "Tokyo-Updates-MiniApp",
+              "IMDBKit",
+              "Tokyo-PrincessBot"
+            ];
+
             const startMarker =
               "<!-- CONTRIBUTION-ACTIVITY:START -->";
 
             const endMarker =
               "<!-- CONTRIBUTION-ACTIVITY:END -->";
 
-            const response = await fetch(
-              `https://api.github.com/users/${username}/events/public?per_page=100`,
+            // Current time and day boundaries in India (IST).
+            const now = new Date();
+
+            const istNow = new Date(
+              now.getTime() + (330 * 60 * 1000)
+            );
+
+            const todayStart = new Date(
+              Date.UTC(
+                istNow.getUTCFullYear(),
+                istNow.getUTCMonth(),
+                istNow.getUTCDate()
+              ) - (330 * 60 * 1000)
+            );
+
+            const todayEnd = now;
+
+            const yesterdayEnd = new Date(
+              todayStart.getTime() - 1000
+            );
+
+            const yearStart = new Date(
+              todayStart.getTime()
+            );
+
+            yearStart.setUTCDate(
+              yearStart.getUTCDate() - 365
+            );
+
+            const todayLabel = istNow.toLocaleDateString(
+              "en-IN",
               {
-                headers: {
-                  "Accept": "application/vnd.github+json",
-                  "User-Agent": "Tokyo-Updates-Contribution-Activity"
-                }
+                day: "2-digit",
+                month: "long",
+                year: "numeric",
+                timeZone: "UTC"
               }
             );
 
-            if (!response.ok) {
-              throw new Error(
-                `GitHub Events API failed: ${response.status}`
-              );
-            }
+            // Count actual commits attributed to the GitHub account.
+            async function countCommits(repo, since, until) {
+              let page = 1;
+              let total = 0;
 
-            const events = await response.json();
+              while (true) {
+                const url = new URL(
+                  `https://api.github.com/repos/${username}/${repo}/commits`
+                );
 
-            const pushes = events.filter(
-              event =>
-                event.type === "PushEvent" &&
-                event.repo &&
-                event.repo.name
-            );
+                url.searchParams.set("author", username);
+                url.searchParams.set(
+                  "since",
+                  since.toISOString()
+                );
+                url.searchParams.set(
+                  "until",
+                  until.toISOString()
+                );
+                url.searchParams.set("per_page", "100");
+                url.searchParams.set("page", String(page));
 
-            const groups = new Map();
-
-            for (const event of pushes) {
-              const date = new Date(event.created_at);
-
-              const month = date.toLocaleDateString(
-                "en-US",
-                {
-                  month: "long",
-                  year: "numeric",
-                  timeZone: "UTC"
-                }
-              );
-
-              const repo = event.repo.name;
-
-              const key = `${month}|||${repo}`;
-
-              if (!groups.has(key)) {
-                groups.set(key, {
-                  month,
-                  repo,
-                  commits: 0,
-                  latest: event.created_at
+                const response = await fetch(url, {
+                  headers: {
+                    "Accept": "application/vnd.github+json",
+                    "Authorization":
+                      `Bearer ${process.env.GITHUB_TOKEN}`,
+                    "X-GitHub-Api-Version": "2022-11-28",
+                    "User-Agent":
+                      "Tokyo-Updates-Contribution-Activity"
+                  }
                 });
+
+                if (!response.ok) {
+                  throw new Error(
+                    `Commit API failed for ${repo}: ` +
+                    `${response.status} ${await response.text()}`
+                  );
+                }
+
+                const commits = await response.json();
+
+                total += commits.length;
+
+                if (commits.length < 100) {
+                  break;
+                }
+
+                page += 1;
               }
 
-              const item = groups.get(key);
-
-              const count =
-                Number(event.payload?.size) ||
-                event.payload?.commits?.length ||
-                0;
-
-              item.commits += count;
-
-              if (event.created_at > item.latest) {
-                item.latest = event.created_at;
-              }
+              return total;
             }
 
-            const rows = [...groups.values()]
-              .sort(
-                (a, b) =>
-                  new Date(b.latest) - new Date(a.latest)
-              )
-              .slice(0, 12);
+            // Collect each project's previous-365-day and today's counts.
+            const stats = [];
 
-            let activity;
+            for (const repo of repos) {
+              const repoUrl =
+                `https://github.com/${username}/${repo}`;
 
-            if (rows.length === 0) {
-              activity = [
-                '<tr><td align="center">',
-                '**No recent public push activity found.**',
-                '<br/>Private activity may not appear here.',
-                '</td></tr>'
-              ].join("\n");
-            } else {
-              activity = rows.map(item => {
-                const parts = item.repo.split("/");
-                const owner = parts[0];
-                const repoName = parts[1];
+              const [last365, today] = await Promise.all([
+                countCommits(
+                  repo,
+                  yearStart,
+                  yesterdayEnd
+                ),
+                countCommits(
+                  repo,
+                  todayStart,
+                  todayEnd
+                )
+              ]);
 
-                const repoUrl =
-                  `https://github.com/${item.repo}`;
-
-                const commitsUrl =
-                  `${repoUrl}/commits?author=${username}`;
-
-                const count = item.commits;
-
-                return [
-                  '<tr>',
-                  '<td>',
-                  `### 📦 [**${repoName}**](${repoUrl})`,
-                  '',
-                  `📅 **${item.month}**`,
-                  '',
-                  `🔢 [${count} commits](${commitsUrl})`,
-                  '',
-                  `👤 [${owner}](${`https://github.com/${owner}`})`,
-                  '</td>',
-                  '</tr>'
-                ].join("\n");
-              }).join("\n");
+              stats.push({
+                repo,
+                repoUrl,
+                last365,
+                today
+              });
             }
+
+            const totalLast365 = stats.reduce(
+              (sum, item) => sum + item.last365,
+              0
+            );
+
+            const totalToday = stats.reduce(
+              (sum, item) => sum + item.today,
+              0
+            );
+
+            // Keep project names bold using HTML, which works inside tables.
+            const rows = stats.map(item => [
+              "<tr>",
+              "<td>",
+              `📦 <strong><a href="${item.repoUrl}">${item.repo}</a></strong>`,
+              "<br/><br/>",
+              `🗓️ Previous 365 days: <strong>${item.last365}</strong> commits`,
+              "<br/>",
+              `⚡ Today (${todayLabel} IST): <strong>${item.today}</strong> commits`,
+              "<br/><br/>",
+              `<a href="${item.repoUrl}/commits?author=${username}">`,
+              "🔗 View Commits",
+              "</a>",
+              "</td>",
+              "</tr>"
+            ].join("\n")).join("\n");
 
             const generated = [
               startMarker,
-              "### 🗓️ **RECENT CONTRIBUTION ACTIVITY**",
+              "### 🗓️ **𝐑ᴇᴄᴇɴᴛ 𝐂ᴏɴᴛʀɪʙᴜᴛɪᴏɴ 𝐀ᴄᴛɪᴠɪᴛʏ**",
               "",
-              '<table>',
-              '<tr><td align="center">',
-              '**⚡ Automatically updated by GitHub Actions**',
-              '</td></tr>',
-              activity,
-              '</table>',
+              '<p align="center"><strong>⚡ Automatically updated by GitHub Actions</strong></p>',
               "",
-              "<sub>Based on recent public GitHub push events. " +
-              "This is not a complete historical contribution count.</sub>",
+              "<table>",
+              "<tr>",
+              '<td align="center">',
+              "<strong>📊 ALL PROJECTS TOTAL</strong>",
+              "<br/><br/>",
+              `🗓️ Previous 365 days: <strong>${totalLast365}</strong> commits`,
+              "<br/>",
+              `⚡ Today (${todayLabel} IST): <strong>${totalToday}</strong> commits`,
+              "</td>",
+              "</tr>",
+              rows,
+              "</table>",
+              "",
+              "<sub>Counts are fetched from GitHub's commit API. " +
+              "Today's commits are displayed separately from the previous " +
+              "365 days. Only commits attributed by GitHub to this account " +
+              "in the listed repositories are counted.</sub>",
               endMarker
             ].join("\n");
 
@@ -173,21 +229,25 @@ jobs:
             const start = readme.indexOf(startMarker);
             const end = readme.indexOf(endMarker);
 
-            if (start === -1 || end === -1 || end < start) {
+            if (
+              start === -1 ||
+              end === -1 ||
+              end < start
+            ) {
               throw new Error(
                 "Contribution activity markers are missing from README.md"
               );
             }
 
-            const endPosition = end + endMarker.length;
-
             const updated =
               readme.slice(0, start) +
               generated +
-              readme.slice(endPosition);
+              readme.slice(end + endMarker.length);
 
             if (updated === readme) {
-              core.info("Contribution activity is already up to date.");
+              core.info(
+                "Contribution activity is already up to date."
+              );
               return;
             }
 
@@ -202,9 +262,12 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               path: readmePath,
-              message: "chore: update contribution activity",
+              message:
+                "fix: show accurate yearly and daily commit counts",
               content: Buffer.from(updated).toString("base64"),
               sha: file.sha
             });
 
-            core.info("Contribution activity updated successfully.");
+            core.info(
+              "Contribution activity updated successfully."
+            );
