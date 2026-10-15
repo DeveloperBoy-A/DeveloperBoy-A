@@ -244,7 +244,7 @@ Explore the source code and library development.
 </td></tr>
 <tr>
 <td>
-### 📦 [**AutoDelete_Bot**](https://github.com/DeveloperBoy-A/AutoDelete_Bot)
+ 📦 [*AutoDelete_Bot*](https://github.com/DeveloperBoy-A/AutoDelete_Bot)
 
 📅 **October 2026**
 
@@ -297,8 +297,7 @@ Explore the source code and library development.
 
 ### 💚 **𝐘ᴏᴜʀ 𝐆ɪᴛʜᴜʙ 𝐂ᴏɴᴛʀɪʙᴜᴛɪᴏɴ 𝐆ʀᴀᴘʜ**
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=DeveloperBoy-A&theme=redical&hide_border=false&radius=12&area=true" width="100%" alt="GitHub Contribution Activity Graph"/>
-
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=DeveloperBoy-A&theme=radical" width="100%" alt="GitHub Profile Contribution Graph"/>
 <br/>
 
 ### 🐍 **𝐀ɴɪᴍᴀᴛᴇᴅ 𝐂ᴏɴᴛʀɪʙᴜᴛɪᴏɴ ꜱɴᴀᴋᴇ**
