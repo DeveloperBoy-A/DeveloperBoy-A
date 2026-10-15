@@ -215,15 +215,11 @@ Explore the source code and library development.
 
 ---
 
-<div align="center">
+<div align="center">🏆 𝐆ɪᴛʜᴜʙ 𝐀ᴄʜɪᴇᴠᴇᴍᴇɴᴛꜱ
 
-## 🏆 **𝐆ɪᴛʜᴜʙ 𝐓ʀᴏᴘʜɪᴇꜱ**
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-<img src="https://github-profile-trophy.vercel.app/?username=DeveloperBoy-A&theme=radical&no-frame=false&no-bg=true&margin-w=6&row=2&column=4" width="100%" alt="GitHub Profile Trophies"/>
-
-</div>
+<a href="https://github.com/ryo-ma/github-profile-trophy">
+  <img src="https://github-profile-trophy.vercel.app/?username=DeveloperBoy-A&theme=tokyonight&no-frame=true&no-bg=true&margin-w=8&column=4" width="100%" alt="GitHub Profile Trophies"/>
+</a></div>
 
 ---
 
