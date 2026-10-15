@@ -14,45 +14,62 @@
 
 <div align="center"><table>
 <tr>
-<td align="center">👑 ABOUT ME
+<td align="center">
+
+👑 **𝐀ʙᴏᴜᴛ 𝐌ᴇ**
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 </td>
 </tr>
 <tr>
-<td>- 👤 Name: Mr Ankit Meena
-- 🐙 GitHub: "DeveloperBoy-A" (https://github.com/DeveloperBoy-A)
-- 💻 Role: Developer & Telegram Bot Creator
-- 💎 Brand: Tokyo Updates
-- 🎯 Goal: Learn, Build, Improve & Innovate 🚀
+<td>
 
-⚡ My Interests
+- 👤 **𝐍ᴀᴍᴇ:** 𝐌ʀ 𝐀ɴᴋɪᴛ 𝐌ᴇᴇɴᴀ
+- 🐙 **𝐆ɪᴛʜᴜʙ:** [𝐃ᴇᴠᴇʟᴏᴘᴇʀ𝐁ᴏʏ-𝐀](https://github.com/DeveloperBoy-A)
+- 💻 **𝐑ᴏʟᴇ:** 𝐃ᴇᴠᴇʟᴏᴘᴇʀ & 𝐓ᴇʟᴇɢʀᴀᴍ 𝐁ᴏᴛ 𝐂ʀᴇᴀᴛᴏʀ
+- 💎 **𝐁ʀᴀɴᴅ:** 𝐓ᴏᴋʏᴏ 𝐔ᴘᴅᴀᴛᴇꜱ
+- 🎯 **𝐆ᴏᴀʟ:** 𝐋ᴇᴀʀɴ, 𝐁ᴜɪʟᴅ, 𝐈ᴍᴘʀᴏᴠᴇ & 𝐈ɴɴᴏᴠᴀᴛᴇ 🚀
 
-- 🤖 Telegram Bot Development
-- 🐍 Python Programming
-- ⚙️ Automation
-- 🌐 Open Source Projects
-- ✨ Creative Technology
+⚡ **𝐌ʏ 𝐈ɴᴛᴇʀᴇꜱᴛꜱ**
+
+- 🤖 𝐓ᴇʟᴇɢʀᴀᴍ 𝐁ᴏᴛ 𝐃ᴇᴠᴇʟᴏᴘᴍᴇɴᴛ
+- 🐍 𝐏ʏᴛʜᴏɴ 𝐏ʀᴏɢʀᴀᴍᴍɪɴɢ
+- ⚙️ 𝐀ᴜᴛᴏᴍᴀᴛɪᴏɴ
+- 🌐 𝐎ᴘᴇɴ ꜱᴏᴜʀᴄᴇ 𝐏ʀᴏᴊᴇᴄᴛꜱ
+- ✨ 𝐂ʀᴇᴀᴛɪᴠᴇ 𝐓ᴇᴄʜɴᴏʟᴏɢʏ
 
 </td>
 </tr>
-</table></div><div align="center"><table>
+</table>
+</div>
+
+<div align="center">
+<table>
 <tr>
-<td>💬 A LITTLE MORE ABOUT ME
+<td align="center">
 
-- 👋 Hi, I'm Mr Ankit Meena.
-- 🤖 I enjoy building Telegram bots and useful automation tools.
-- 🐍 Exploring Python and software development.
-- 🚀 Working on creative projects under the Tokyo Updates brand.
-- 💡 Always looking for new ideas and better solutions.
-- 🤝 Interested in collaborating on interesting projects.
-- ⚡ My motto: Think Different. Build Better.
+💬 **𝐀 𝐋ɪᴛᴛʟᴇ 𝐌ᴏʀᴇ 𝐀ʙᴏᴜᴛ 𝐌ᴇ**
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 </td>
 </tr>
-</table></div>---
+<tr>
+<td>
 
+- 👋 𝐇ɪ, 𝐈'ᴍ 𝐌ʀ 𝐀ɴᴋɪᴛ 𝐌ᴇᴇɴᴀ.
+- 🤖 𝐈 ᴇɴᴊᴏʏ ʙᴜɪʟᴅɪɴɢ 𝐓ᴇʟᴇɢʀᴀᴍ ʙᴏᴛꜱ ᴀɴᴅ ᴜꜱᴇꜰᴜʟ ᴀᴜᴛᴏᴍᴀᴛɪᴏɴ ᴛᴏᴏʟꜱ.
+- 🐍 𝐄xᴘʟᴏʀɪɴɢ 𝐏ʏᴛʜᴏɴ ᴀɴᴅ ꜱᴏꜰᴛᴡᴀʀᴇ ᴅᴇᴠᴇʟᴏᴘᴍᴇɴᴛ.
+- 🚀 𝐖ᴏʀᴋɪɴɢ ᴏɴ ᴄʀᴇᴀᴛɪᴠᴇ ᴘʀᴏᴊᴇᴄᴛꜱ ᴜɴᴅᴇʀ ᴛʜᴇ 𝐓ᴏᴋʏᴏ 𝐔ᴘᴅᴀᴛᴇꜱ ʙʀᴀɴᴅ.
+- 💡 𝐀ʟᴡᴀʏꜱ ʟᴏᴏᴋɪɴɢ ꜰᴏʀ ɴᴇᴡ ɪᴅᴇᴀꜱ ᴀɴᴅ ʙᴇᴛᴛᴇʀ ꜱᴏʟᴜᴛɪᴏɴꜱ.
+- 🤝 𝐈ɴᴛᴇʀᴇꜱᴛᴇᴅ ɪɴ ᴄᴏʟʟᴀʙᴏʀᴀᴛɪɴɢ ᴏɴ ɪɴᴛᴇʀᴇꜱᴛɪɴɢ ᴘʀᴏᴊᴇᴄᴛꜱ.
+- ⚡ **𝐌ʏ 𝐌ᴏᴛᴛᴏ:** 𝐓ʜɪɴᴋ 𝐃ɪꜰꜰᴇʀᴇɴᴛ. 𝐁ᴜɪʟᴅ 𝐁ᴇᴛᴛᴇʀ.
+
+</td>
+</tr>
+</table>
+</div>
 <div align="center">🛠️ TECH STACK
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -127,6 +144,30 @@ Explore the source code and library development.
 <img src="https://github-profile-trophy.vercel.app/?username=DeveloperBoy-A&theme=radical&no-frame=false&no-bg=true&margin-w=6&row=2&column=4" width="100%" alt="GitHub Profile Trophies"/></div>---
 
 <div align="center">📈 CONTRIBUTION ACTIVITY
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<!-- CONTRIBUTION-ACTIVITY:START -->
+### 🗓️ **RECENT CONTRIBUTION ACTIVITY**
+
+<table>
+<tr>
+<td align="center">
+
+**⚡ Automatically updated by GitHub Actions**
+
+</td>
+</tr>
+<tr>
+<td align="center">
+
+Loading recent public contribution activity...
+
+</td>
+</tr>
+</table>
+
+<sub>Recent public GitHub activity</sub>
+<!-- CONTRIBUTION-ACTIVITY:END -->
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
